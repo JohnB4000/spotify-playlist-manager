@@ -1,0 +1,112 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Gill Sans", sans-serif;
+    text-align: center;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+input, textarea, button, select {
+    font: inherit;
+}
+
+header {
+    background-color: #1db954;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    border-bottom: 5px solid black;
+}
+
+.header-box {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+}
+
+header h1 a, #account-link, #centre-nav a {
+	color: black;
+	font-weight: bold;
+}
+
+header h1 a:hover, #account-link:hover, #centre-nav a:hover {
+    color: white;
+}
+
+header nav ul {
+    list-style-type: none;
+    overflow: hidden;
+}
+
+header nav ul li {
+    float: left;
+}
+
+header nav ul li a {
+    display: block;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: white;
+}
+
+header nav ul li a:hover {
+    color: black;
+}
+
+main {
+	margin: 100px 0;
+}
+
+.tiles ul{
+	list-style-type: none;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+    grid-gap: 50px;
+	row-gap: 100px;
+	margin: 50px 10% 150px 10%;
+}
+
+.tiles .list-item-tile {
+	justify-self: center;
+	align-self: center;	
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+    grid-gap: 25px;
+}
+
+.tiles .list-item-tile img {
+	width: 100%;
+	object-fit: cover;
+	aspect-ratio: 1 / 1;
+	border: 2px solid black;
+}
+
+.tiles .list-item-tile p {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.tiles h2 {
+	margin: 50px 0 30px 0;
+}
+
+
+footer {
+    background-color: #1db954;
+    border-top: 5px solid black;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

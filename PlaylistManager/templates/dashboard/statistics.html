@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block head %}
+	<title>Statistics</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='statistics.css') }}">
+{% endblock %}
+
+
+{% block content %}
+	<section class="tiles" id="top-songs">
+		<h2>Top Songs</h2>
+		<button id="song-short">Last Month</button>
+		<button id="song-medium">Last 6 Months</button>
+		<button id="song-long">All Time</button>
+		<ul>
+			{% for song in top_songs[0] %}
+				<li class="list-item-tile">
+					<img src="{{song['album']['images'][0]['url']}}">
+					<p>{{song['name']}}</p>
+					<p>-
+					{% for artist in song['artists'] %}
+						{{artist['name']}} -
+					{% endfor %}
+					</p>
+				</li>
+			{% endfor %}
+		</ul>
+		<script>
+			var top_songs = {{ top_songs | tojson }};
+		</script>
+	</section>
+
+	<section class="tiles" id="top-artists">
+		<h2>Top Artists</h2>
+		<button id="artist-short">Last Month</button>
+		<button id="artist-medium">Last 6 Months</button>
+		<button id="artist-long">All Time</button>
+		<ul>
+			{% for artist in top_artists[0] %}
+				<li class="list-item-tile">
+					<img src="{{artist['images'][0]['url']}}">
+					<p>{{artist['name']}}</p>
+				</li>
+			{% endfor %}
+		</ul>
+		<script>
+			var top_artists = {{ top_artists | tojson }};
+		</script>
+	</section>
+	
+	<script src="{{ url_for('static', filename='statistics.js') }}"></script>
+{% endblock %}

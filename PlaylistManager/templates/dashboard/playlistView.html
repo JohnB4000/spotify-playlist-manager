@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block head %}
+	<title>{{ playlist_name }}</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='playlistView.css') }}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
+
+{% block content %}
+	<h2>{{ playlist_name }}</h2>
+	<section id="playlist-table">
+		<table>
+			<thead>
+				<tr class="table-header">
+					<th>#</th>
+					<th></th>
+					<th class="sortable">Song<i></i></th>
+					<th class="sortable">Artists<i></i></th>
+					<th class="sortable">Album<i></i></th>
+					<th class="sortable">Length<i></i></th>
+					<th class="sortable">Released<i></i></th>
+					<th class="sortable">Added<i></i></th>
+				</tr>
+			</thead>
+			<tbody id="table-body">
+				{% for track in tracks %}
+					<tr>
+						<td>{{ loop.index }}</td>
+						<td class="img-td"><img src='{{ track["track"]["album"]["images"][0]["url"] }}''></td>
+						<td><h3>{{ track["track"]["name"] }}</h3></td>
+						<td>
+							{% set artist_names = [] %}
+							{% for artist in track["track"]["artists"] %}
+								{% set _ = artist_names.append(artist["name"]) %}
+							{% endfor %}
+							{{ artist_names | join(", ") }}
+						</td>
+						<td>{{ track["track"]["album"]["name"] }}</td>
+						<td>{{ track["track"]["length"]["minutes"] }}:{{ "%02d"|format(track["track"]["length"]["seconds"]) }}</td>
+						<td>{{ track["track"]["album"]["release_date"] }}</td>
+						<td>{{ track["date_added"]["day"] }} {{ track["date_added"]["month_name"] }} {{ track["date_added"]["year"] }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</section>
+
+	<script>
+		var tracks = {{ tracks | tojson }};
+	</script>
+	<script src="{{ url_for('static', filename='playlistView.js') }}"></script>
+{% endblock %}

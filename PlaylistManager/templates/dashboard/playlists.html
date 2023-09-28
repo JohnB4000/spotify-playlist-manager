@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block head %}
+	<title>Dashboard</title>
+{% endblock %}
+
+
+{% block content %}
+	<section class="tiles">
+		<h2>Playlists</h2>
+		<ul>
+			{% for playlist in playlists %}
+				<li>
+					<a href="{{ url_for('dashboard.playlistView', playlist_id=playlist['id']) }}" class="list-item-tile">
+
+						{% if playlist['images'] != [] %}
+							<img src="{{playlist['images'][0]['url']}}">
+						{% else %}
+							<img src="/static/noImage.png">
+						{% endif %}
+						<p>{{playlist['name']}}</p>
+					</a>
+					<p>by {{playlist['owner']['display_name']}}</p>
+				</li>
+			{% endfor %}
+		</ul>
+	</section>
+{% endblock %}

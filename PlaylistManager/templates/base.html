@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+		{% block head %}{% endblock %}
+	</head>
+
+	<body>
+		<header>
+			<h1 class="header-box"><a href="/">Playlist Manager</a></h1>
+			<nav id="centre-nav" class="header-box">
+				{% if g.user %}
+				<ul>
+					<li><a href="{{ url_for('dashboard.playlists') }}">Playlists</a></li>
+					<li><a href="{{ url_for('dashboard.statistics') }}">Statistics</a></li>
+				</ul>
+				{% endif %}
+			</nav>
+			<nav id="right-nav" class="header-box">
+				<ul>
+				{% if g.user %}
+					<li><a id="account-link" href="{{ url_for('account.account') }}">{{ g.user['username'] }}</a></li>
+					<li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+				{% else %}
+					<li><a href="{{ url_for('auth.register') }}">Register</a></li>
+					<li><a href="{{ url_for('auth.login') }}">Log In</a></li>
+				{% endif %}
+				</ul>
+			</nav>
+		</header>
+
+		<main>
+			{% for message in get_flashed_messages() %}
+				<div>{{ message }}</div>
+			{% endfor %}
+
+			{% block content %}{% endblock %}
+		</main>
+		
+		<footer>
+			Playlist Manager created by John Band using Flask and the Spotify API.
+		</footer>
+	</body>
+</html>
