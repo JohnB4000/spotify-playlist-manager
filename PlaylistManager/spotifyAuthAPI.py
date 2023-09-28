@@ -1,9 +1,9 @@
 from dotenv import load_dotenv
 import os, json, random, base64
-from requests import post, get
+from requests import post
 from typing import Tuple
 
-from flask import session, redirect
+from flask import session
 
 
 class SpotifyAuthURLs:
