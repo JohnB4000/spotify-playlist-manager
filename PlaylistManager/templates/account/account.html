@@ -1,5 +1,13 @@
 {% extends 'base.html' %}
 
+{% block head %}
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/account.css') }}">
+{% endblock head %}
+
 {% block content %}
-	<h1>Account</h1>
+	<h1>{{ g.user['username'] }}'s Account</h1>
+	<section id="change-details-links">
+		<a href="{{ url_for('account.changeUsername') }}">Change Username</a>
+		<a href="{{ url_for('account.changePassword') }}">Change Password</a>
+	</section>
 {% endblock %}

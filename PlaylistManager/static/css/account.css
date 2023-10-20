@@ -1,0 +1,25 @@
+#change-details-links {
+	display: flex;
+    flex-direction: column;
+	align-items: center;
+	margin: 50px;
+}
+
+#change-details-links a {
+	margin: 20px 0;
+	color: black;
+	font-weight: bold;
+	border: 3px solid black;
+	border-radius: 10px;
+	padding: 20px;
+	background-color: lightgrey;
+}
+
+#change-details-links a:hover {
+	background-color: darkgrey;
+	color: white;
+}
+
+#change-details-links a:active {
+	color: grey;
+}
