@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
 
 {% block head %}
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/changeUsername.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">
 {% endblock head %}
 
 {% block content %}
 	<h2>Change Username</h2>
+	<form method="post">
+		<label for="newUsername">New Username</label>
+		<input name="newUsername" id="newUsername" required>
+		<input class="submit" type="submit" value="Update">
+	</form>
 {% endblock %}

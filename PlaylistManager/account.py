@@ -11,12 +11,12 @@ bp = Blueprint('account', __name__, url_prefix='/account')
 def account():
 	return render_template("account/account.html")
 
-@bp.route('/')
+@bp.route('/changeUsername', methods=('GET', 'POST'))
 @login_required
 def changeUsername():
 	return render_template("account/changeUsername.html")
 
-@bp.route('/')
+@bp.route('/changePassword', methods=('GET', 'POST'))
 @login_required
 def changePassword():
 	return render_template("account/changePassword.html")
